@@ -133,7 +133,7 @@ p {
 .miniatura {
     min-width: 64px;
     height: 89px;
-    background-color: grey;
+    background-color: white;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 2px;
     display: flex;
@@ -141,7 +141,7 @@ p {
     justify-content: center;
 }
 
-.miniatura-poster {
+.miniatura-poster > img {
     width: 48px;
     height: 72px;
     background-color: white;

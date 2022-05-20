@@ -1,6 +1,23 @@
+import {useParams} from 'react-router-dom';
+import React from 'react';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+
 export default function PageSelectHour(){
+
+    const { idFilme } = useParams();
+    const [films, setFilms] = React.useState({});
+    
+    useEffect(() => {
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`)
+    
+        promise.then(response => {
+            setFilms({...response.data})
+        })
+    })
+
     return (
-        <div className="page-select-hour hidden">
+        <div className="page-select-hour">
                 <div className="up">
                     <div className="header">
                         <h1>CineFlex</h1>
@@ -39,9 +56,11 @@ export default function PageSelectHour(){
                 </div>
                 <div className="bottom">
                     <div className="miniatura">
-                        <div className="miniatura-poster"></div>
+                        <div className="miniatura-poster">
+                            <img src={films.posterURL} />
+                        </div>
                     </div>
-                    <p>Doutor Estranho no Multiverso da Loucura</p>
+                    <p>{films.title}</p>
                 </div>
             </div>
     )

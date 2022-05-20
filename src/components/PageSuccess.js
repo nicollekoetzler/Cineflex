@@ -1,6 +1,6 @@
 export default function PageSuccess() {
     return (
-        <div className="page-success hidden">
+        <div className="page-success">
                 <div className="up">
                     <div className="header">
                         <h1>CineFlex</h1>

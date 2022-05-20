@@ -12,12 +12,12 @@ export default function App(){
 
     return(
         <BrowserRouter>
-        
-                <PageSelectFilm />
-                <PageSelectHour />
-                <PageSelectChair />
-                <PageSuccess />
-            
+            <Routes>
+                <Route path="/" element={<PageSelectFilm />}/>
+                <Route path="/sessoes/:idFilme" element={<PageSelectHour />}/>
+                <Route path="/chair/:idSessao" element={<PageSelectChair />}/>
+                <Route path="/success/:parametrosuccess" element={<PageSuccess />}/>
+            </Routes>
         </BrowserRouter>
     )
 }

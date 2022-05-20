@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 
 function EmCartaz({source}) {
+
     return(
         <div className="em-cartaz">
             <img src={source} />
@@ -10,8 +11,6 @@ function EmCartaz({source}) {
 }
 
 export default function PageSelectFilm() {
-
-
     const [films, setFilms] = React.useState([]);
 
     

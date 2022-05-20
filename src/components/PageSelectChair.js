@@ -1,6 +1,6 @@
 export default function() {
     return (
-        <div className="page-select-chair hidden">
+        <div className="page-select-chair">
                 <div className="up">
                     <div className="header">
                         <h1>CineFlex</h1>
