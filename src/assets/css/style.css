@@ -51,11 +51,13 @@ p {
     flex-direction: column;
 }
 
-.par {
+.container-filmes {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.emcartaz {
+.em-cartaz {
     width: 145px;
     height: 209px;
     background-color: white;
@@ -68,7 +70,7 @@ p {
     cursor: pointer;
 }
 
-.emcartaz > img {
+.em-cartaz > img {
     background-color: grey;
     width: 129px;
     height: 193px;
