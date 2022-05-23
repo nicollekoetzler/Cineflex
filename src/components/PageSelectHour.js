@@ -12,10 +12,12 @@ function Hour({ weekday, date, showtimes }) {
             </div>
             <div className="horas">
                 {showtimes.map(showtime => {
-                    return (
-                        <div className="sub-hora">
-                            <p>{showtime.name}</p>
-                        </div>
+                    return (    
+                        <Link style={{textDecoration: "none", color: "black"}} to={`/assentos/${showtime.id}`}>
+                            <div className="sub-hora">
+                                <p>{showtime.name}</p>
+                            </div>
+                        </Link>
                     )
                 })}
             </div>

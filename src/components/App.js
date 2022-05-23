@@ -15,7 +15,7 @@ export default function App(){
             <Routes>
                 <Route path="/" element={<PageSelectFilm />}/>
                 <Route path="/sessoes/:idFilme" element={<PageSelectHour />}/>
-                <Route path="/chair/:idSessao" element={<PageSelectChair />}/>
+                <Route path="/assentos/:idSessao" element={<PageSelectChair />}/>
                 <Route path="/success/:parametrosuccess" element={<PageSuccess />}/>
             </Routes>
         </BrowserRouter>
