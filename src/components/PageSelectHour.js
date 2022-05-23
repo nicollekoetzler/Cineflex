@@ -4,6 +4,25 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+function Hour({ weekday, date, showtimes }) {
+    return(
+        <div className="container-data">
+            <div className="data">
+                <p>{`${ weekday } - ${ date }`}</p>
+            </div>
+            <div className="horas">
+                {showtimes.map(showtime => {
+                    return (
+                        <div className="sub-hora">
+                            <p>{showtime.name}</p>
+                        </div>
+                    )
+                })}
+            </div>
+        </div>
+    )
+}
+
 export default function PageSelectHour(){
 
     const { idFilme } = useParams();
@@ -15,7 +34,7 @@ export default function PageSelectHour(){
         promise.then(response => {
             setFilms({...response.data})
         })
-    }, [])
+    }, []);
 
     return (
         <div className="page-select-hour">
@@ -30,32 +49,7 @@ export default function PageSelectHour(){
                     </div>
                 </div>
                 <div className="down2">
-                    <div className="container-data">
-                        <div className="data">
-                            <p>Quinta-feira - 24/06/2021</p>
-                        </div>
-                        <div className="horas">
-                            <div className="sub-hora">
-                                <p>15:00</p>
-                            </div>
-                            <div className="sub-hora">
-                                <p>19:00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="container-data">
-                        <div className="data">
-                            <p>Quinta-feira - 24/06/2021</p>
-                        </div>
-                        <div className="horas">
-                            <div className="sub-hora">
-                                <p>15:00</p>
-                            </div>
-                            <div className="sub-hora">
-                                <p>19:00</p>
-                            </div>
-                        </div>
-                    </div>
+                    {films.days !== undefined ? films.days.map(value => <Hour weekday={value.weekday} date={value.date} showtimes={value.showtimes} />) : <></>}
                 </div>
                 <div className="bottom">
                     <div className="miniatura">

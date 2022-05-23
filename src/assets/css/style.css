@@ -80,6 +80,12 @@ p {
 
 /* SELECT-HOUR */
 
+.page-select-hour {
+    width: 100%;
+    height: 86vh;
+    overflow-y: scroll;
+}
+
 .down2 {
     padding: 24px;
 }
