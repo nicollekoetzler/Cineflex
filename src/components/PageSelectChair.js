@@ -1,4 +1,32 @@
-export default function() {
+import {useParams} from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function Chairs({seats}){
+
+    return (
+        <>
+            {seats.map( (seat, index) => {
+                return(
+                    <div className="ball">
+                        <p>{seat.name}</p>
+                    </div>
+                )
+            })}
+        </>
+    )
+}
+
+export default function PageSelectChair() {
+    const {idSessao} = useParams();
+    const [sessao, setSessao] = useState({})
+
+    useEffect ( () => {
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
+
+        promise.then( (response) => setSessao(response.data) );
+    }, []);
+
     return (
         <div className="page-select-chair">
                 <div className="up">
@@ -12,164 +40,7 @@ export default function() {
                 <div className="down3">
                     <div className="assentos">
                         <div className="container-balls">
-                            <div className="ball">
-                                <p>01</p>
-                            </div>
-                            <div className="ball">
-                                <p>02</p>
-                            </div>
-                            <div className="ball">
-                                <p>03</p>
-                            </div>
-                            <div className="ball">
-                                <p>04</p>
-                            </div>
-                            <div className="ball">
-                                <p>05</p>
-                            </div>
-                            <div className="ball">
-                                <p>06</p>
-                            </div>
-                            <div className="ball">
-                                <p>07</p>
-                            </div>
-                            <div className="ball">
-                                <p>08</p>
-                            </div>
-                            <div className="ball">
-                                <p>09</p>
-                            </div>
-                            <div className="ball">
-                                <p>10</p>
-                            </div>
-                        </div>
-                        <div className="container-balls">
-                            <div className="ball">
-                                <p>01</p>
-                            </div>
-                            <div className="ball">
-                                <p>02</p>
-                            </div>
-                            <div className="ball">
-                                <p>03</p>
-                            </div>
-                            <div className="ball">
-                                <p>04</p>
-                            </div>
-                            <div className="ball">
-                                <p>05</p>
-                            </div>
-                            <div className="ball">
-                                <p>06</p>
-                            </div>
-                            <div className="ball">
-                                <p>07</p>
-                            </div>
-                            <div className="ball">
-                                <p>08</p>
-                            </div>
-                            <div className="ball">
-                                <p>09</p>
-                            </div>
-                            <div className="ball">
-                                <p>10</p>
-                            </div>
-                        </div>
-                        <div className="container-balls">
-                            <div className="ball">
-                                <p>01</p>
-                            </div>
-                            <div className="ball">
-                                <p>02</p>
-                            </div>
-                            <div className="ball">
-                                <p>03</p>
-                            </div>
-                            <div className="ball">
-                                <p>04</p>
-                            </div>
-                            <div className="ball">
-                                <p>05</p>
-                            </div>
-                            <div className="ball">
-                                <p>06</p>
-                            </div>
-                            <div className="ball">
-                                <p>07</p>
-                            </div>
-                            <div className="ball">
-                                <p>08</p>
-                            </div>
-                            <div className="ball">
-                                <p>09</p>
-                            </div>
-                            <div className="ball">
-                                <p>10</p>
-                            </div>
-                        </div>
-                        <div className="container-balls">
-                            <div className="ball">
-                                <p>01</p>
-                            </div>
-                            <div className="ball">
-                                <p>02</p>
-                            </div>
-                            <div className="ball">
-                                <p>03</p>
-                            </div>
-                            <div className="ball">
-                                <p>04</p>
-                            </div>
-                            <div className="ball">
-                                <p>05</p>
-                            </div>
-                            <div className="ball">
-                                <p>06</p>
-                            </div>
-                            <div className="ball">
-                                <p>07</p>
-                            </div>
-                            <div className="ball">
-                                <p>08</p>
-                            </div>
-                            <div className="ball">
-                                <p>09</p>
-                            </div>
-                            <div className="ball">
-                                <p>10</p>
-                            </div>
-                        </div>
-                        <div className="container-balls">
-                            <div className="ball">
-                                <p>01</p>
-                            </div>
-                            <div className="ball">
-                                <p>02</p>
-                            </div>
-                            <div className="ball">
-                                <p>03</p>
-                            </div>
-                            <div className="ball">
-                                <p>04</p>
-                            </div>
-                            <div className="ball">
-                                <p>05</p>
-                            </div>
-                            <div className="ball">
-                                <p>06</p>
-                            </div>
-                            <div className="ball">
-                                <p>07</p>
-                            </div>
-                            <div className="ball">
-                                <p>08</p>
-                            </div>
-                            <div className="ball">
-                                <p>09</p>
-                            </div>
-                            <div className="ball">
-                                <p>10</p>
-                            </div>
+                            {sessao.seats !== undefined ? <Chairs seats={sessao.seats}/> : <></>}
                         </div>
                     </div>
                 </div>
@@ -202,9 +73,12 @@ export default function() {
                 </div>
                 <div className="bottom">
                     <div className="miniatura">
-                        <div className="miniatura-poster"></div>
+                        <div className="miniatura-poster">
+                            <img src={sessao.movie !== undefined ? sessao.movie.posterURL : ""} alt={sessao.movie !== undefined ? sessao.movie.title : ""}/>
+                        </div>
                     </div>
-                    <p>Doutor Estranho no Multiverso da Loucura</p>
+                    <p>{sessao.movie !== undefined ? sessao.movie.title : ""}</p>
+                    <p>{sessao.day !== undefined ? `${sessao.day.weekday} ${sessao.day.date}` : ""}</p>
                 </div>
             </div>
     )

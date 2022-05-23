@@ -1,5 +1,4 @@
 import {useParams} from 'react-router-dom';
-import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -28,7 +27,7 @@ function Hour({ weekday, date, showtimes }) {
 export default function PageSelectHour(){
 
     const { idFilme } = useParams();
-    const [films, setFilms] = React.useState({});
+    const [films, setFilms] = useState({});
     
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`)

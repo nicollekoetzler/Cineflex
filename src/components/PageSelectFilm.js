@@ -5,7 +5,7 @@ import React from 'react';
 function EmCartaz({source, id}) {
 
     return(
-        <Link to={`/sessoes/${id} `}>
+        <Link to={`/sessoes/${id}`}>
             <div className="em-cartaz">
                 <img src={source} />
             </div>

@@ -180,6 +180,8 @@ select-chair {
 
 .container-balls {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-bottom: 14px;
 }
 
@@ -192,8 +194,7 @@ select-chair {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 3px;
-    margin-left: 3px;
+    margin: 4px;
 }
 
 .ball > p {
