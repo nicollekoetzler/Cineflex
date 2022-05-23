@@ -1,10 +1,16 @@
-export default function PageSuccess() {
+import {Link} from 'react-router-dom';
+
+export default function PageSuccess( {choseChair, sessao, buyerData} ) {
+
+
     return (
         <div className="page-success">
                 <div className="up">
-                    <div className="header">
-                        <h1>CineFlex</h1>
-                    </div>
+                    <Link style={{textDecoration: "none", color: "black"}} to={"/"}>
+                        <div className="header">
+                            <h1>CineFlex</h1>
+                        </div>
+                    </Link>
                     <div className="subheader4">
                         <p>Pedido feito com sucesso!</p>
                     </div>
@@ -12,22 +18,27 @@ export default function PageSuccess() {
                 <div className="down4">
                     <div className="container">
                         <h2>Filme e sessão</h2>
-                        <h3>Enola Holmes</h3>
-                        <p>24/06/2021 15:00</p>
+                        <h3>{sessao.movie.title}</h3>
+                        <p>{sessao.day.date} {sessao.name}</p>
                     </div>
                     <div className="container">
                         <h2>Ingressos</h2>
-                        <h3>Assento 15</h3>
-                        <p>Assento 16</p>
+                        {choseChair.map( seat => {
+                            return (
+                                <h3>Assento: {seat.name}</h3>
+                            )
+                        } )}
                     </div>
                     <div className="container">
                         <h2>Comprador</h2>
-                        <h3>Nome: João da Silva Sauro</h3>
-                        <p>CPF: 123.456.789-10</p>
+                        <h3>Nome: {buyerData.name}</h3>
+                        <p>CPF: {buyerData.cpf}</p>
                     </div>
-                    <div className="container-button4">
-                        <button>Voltar pra Home</button>
-                    </div>
+                    <Link style={{textDecoration: "none", color: "black"}} to={"/"}>
+                        <div className="container-button4">
+                            <button>Voltar pra Home</button>
+                        </div>
+                    </Link>
                 </div>
             </div>
     )
