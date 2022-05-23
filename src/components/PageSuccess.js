@@ -34,11 +34,13 @@ export default function PageSuccess( {choseChair, sessao, buyerData} ) {
                         <h3>Nome: {buyerData.name}</h3>
                         <p>CPF: {buyerData.cpf}</p>
                     </div>
-                    <Link style={{textDecoration: "none", color: "black"}} to={"/"}>
-                        <div className="container-button4">
-                            <button>Voltar pra Home</button>
-                        </div>
-                    </Link>
+                    
+                    <div className="container-button4">
+                        <Link style={{textDecoration: "none", color: "black"}} to={"/"}>
+                            <button className='button4' >Voltar pra Home</button>
+                        </Link>
+                    </div>
+                    
                 </div>
             </div>
     )

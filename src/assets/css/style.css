@@ -159,7 +159,7 @@ p {
 
 .page-select-chair {
     width: 100%;
-    height: 82vh;
+    height: 70vh;
     overflow-y: scroll;
 }
 
@@ -360,7 +360,7 @@ select-chair {
     justify-content: center;
 }
 
-.container-button4 > button {
+.button4 {
     width: 225px;
     height: 42px;
     background-color: #ff7d00;
@@ -370,6 +370,7 @@ select-chair {
     font-weight: 500;
     border: none;
     margin-top: 34px;
+    cursor: pointer;
 }
 
 /* ^ SUCCESS ^ */

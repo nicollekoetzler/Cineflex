@@ -10,7 +10,7 @@ function Chair( {seat, choseChair, setChoseChair} ) {
     function selectChair() {
         setSelected(!selected);
         if(selected){
-            setChoseChair(choseChair.filter( (chair) => chair.id !== seat.id ));
+            setChoseChair(choseChair.filter( (chair) => chair.id !== seat.id ))
         } else{
             setChoseChair([...choseChair, {id:seat.id, name:seat.name}]);
         }
