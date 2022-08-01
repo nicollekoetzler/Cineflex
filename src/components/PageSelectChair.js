@@ -54,7 +54,7 @@ export default function PageSelectChair({choseChair, setChoseChair, sessao, setS
             cpf: inputCpf
         };
 
-        const promise = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", body);
+        const promise = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", body);
 
         promise.then(response => {
             setBuyerData(body);
@@ -63,7 +63,7 @@ export default function PageSelectChair({choseChair, setChoseChair, sessao, setS
     }
 
     useEffect ( () => {
-        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSessao}/seats`);
 
         promise.then( (response) => setSessao(response.data) );
     }, []);
